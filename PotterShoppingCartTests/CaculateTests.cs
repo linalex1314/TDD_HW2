@@ -58,13 +58,36 @@ namespace PotterShoppingCart.Tests
             shoppingCart.Add(books.Find(x => x.Name == "Book2"));
             shoppingCart.Add(books.Find(x => x.Name == "Book3"));
 
-            //act廿
+            //act
             var actual = target.CaculatePrice(shoppingCart);
             var expected = 270;
 
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void Buy_book1_book2_book3_book4_price_should_be_100multipliedBy4multipliedByPercent80_result_is_320()
+        {
+            //arrange
+            var target = new Caculate();
+            var books = GetBooks();
+
+            var shoppingCart = new ShoppingCart();
+
+            shoppingCart.Add(books.Find(x => x.Name == "Book1"));
+            shoppingCart.Add(books.Find(x => x.Name == "Book2"));
+            shoppingCart.Add(books.Find(x => x.Name == "Book3"));
+            shoppingCart.Add(books.Find(x => x.Name == "Book4"));
+
+            //act
+            var actual = target.CaculatePrice(shoppingCart);
+            var expected = 320;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
 
 
         private List<Book> GetBooks()
