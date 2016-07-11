@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="Caculate.cs" />
+    <Compile Include="DisCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingCart.cs" />
   </ItemGroup>
