@@ -113,6 +113,30 @@ namespace PotterShoppingCart.Tests
         }
 
 
+        [TestMethod()]
+        public void Buy_book1_book2_book3Twice_price_should_be_100multipliedBy3multipliedByPercent90_Plus100_result_is_370()
+        {
+            //arrange
+            var target = new Caculate();
+            var books = GetBooks();
+
+            var shoppingCart = new ShoppingCart();
+
+            shoppingCart.Add(books.Find(x => x.Name == "Book1"));
+            shoppingCart.Add(books.Find(x => x.Name == "Book2"));
+            shoppingCart.Add(books.Find(x => x.Name == "Book3"));
+            shoppingCart.Add(books.Find(x => x.Name == "Book3"));
+         
+
+            //act
+            var actual = target.CaculatePrice(shoppingCart);
+            var expected = 370;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
         private List<Book> GetBooks()
         {
             var books = new List<Book> {
