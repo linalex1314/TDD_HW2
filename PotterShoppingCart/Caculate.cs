@@ -13,11 +13,18 @@ namespace PotterShoppingCart
             return 100;
         }
 
-        public object CaculateShipping(ShoppingCart shoppingCart)
+        public int CaculatePrice(ShoppingCart shoppingCart)
         {
-            throw new NotImplementedException();
+            int totalPrice = 0;
+
+            if (shoppingCart.books.Count == 1)
+            {
+                totalPrice = 100;
+            }
+
+            return totalPrice;
         }
     }
 
-    
+
 }

@@ -12,7 +12,7 @@ namespace PotterShoppingCart.Tests
             //arrange
             var target = new Caculate();
 
-            var books = new List<Book> {
+            var bookRepository = new List<Book> {
                 new Book { Name="Book1",Price=100},
                 new Book { Name="Book2",Price=100},
                 new Book { Name="Book3",Price=100},
@@ -22,10 +22,10 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(books.Find(x => x.Name == "Book1"));
+            shoppingCart.Add(bookRepository.Find(x => x.Name == "Book1"));
 
             //act
-            var actual = target.CaculateShipping(shoppingCart);
+            var actual = target.CaculatePrice(shoppingCart);
             var expected = 100;
 
             //assert
