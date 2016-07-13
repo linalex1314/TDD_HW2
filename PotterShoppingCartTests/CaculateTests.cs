@@ -9,7 +9,7 @@ namespace PotterShoppingCart.Tests
         [TestMethod()]
         public void Buy_book1_price_should_be_100()
         {
-            //arrange  
+            //arrange
             var target = new Caculate();
             var harryPotterBooks = GetBooks();
             var harryPotterDiscount = GetDiscount();   //設定折扣
@@ -18,7 +18,7 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"));
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"), 1);
 
             //act
             var actual = target.CaculatePrice(shoppingCart, bookSet);
@@ -31,7 +31,7 @@ namespace PotterShoppingCart.Tests
         [TestMethod()]
         public void Buy_book1_book2_price_should_be_100multipliedBy2multipliedByPercent95_result_is_190()
         {
-            //arrange  
+            //arrange
             var target = new Caculate();
             var harryPotterBooks = GetBooks();
             var harryPotterDiscount = GetDiscount();   //設定折扣
@@ -40,8 +40,8 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"));
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"), 1);
 
             //act
             var actual = target.CaculatePrice(shoppingCart, bookSet);
@@ -54,7 +54,7 @@ namespace PotterShoppingCart.Tests
         [TestMethod()]
         public void Buy_book1_book2_book3_price_should_be_100multipliedBy3multipliedByPercent90_result_is_270()
         {
-            //arrange  
+            //arrange
             var target = new Caculate();
             var harryPotterBooks = GetBooks();
             var harryPotterDiscount = GetDiscount();   //設定折扣
@@ -63,9 +63,9 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"));
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"), 1);
 
             //act
             var actual = target.CaculatePrice(shoppingCart, bookSet);
@@ -78,7 +78,7 @@ namespace PotterShoppingCart.Tests
         [TestMethod()]
         public void Buy_book1_book2_book3_book4_price_should_be_100multipliedBy4multipliedByPercent80_result_is_320()
         {
-            //arrange  
+            //arrange
             var target = new Caculate();
             var harryPotterBooks = GetBooks();
             var harryPotterDiscount = GetDiscount();   //設定折扣
@@ -87,10 +87,10 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book4"));
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book4"), 1);
 
             //act
             var actual = target.CaculatePrice(shoppingCart, bookSet);
@@ -112,15 +112,14 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book4"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book5"));
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book4"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book5"), 1);
 
             //act
             var actual = target.CaculatePrice(shoppingCart, bookSet);
-
 
             var expected = 375;
 
@@ -140,11 +139,9 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"));
-
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"), 2);
 
             //act
             var actual = target.CaculatePrice(shoppingCart, bookSet);
@@ -154,6 +151,7 @@ namespace PotterShoppingCart.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod()]
         public void Buy_book1_book2Twice_book3Twice_price_should_be_100multipliedBy3multipliedByPercent90_Plus100multipliedByPercent95_result_is_460()
         {
             //arrange
@@ -165,12 +163,9 @@ namespace PotterShoppingCart.Tests
 
             var shoppingCart = new ShoppingCart();
 
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"));
-            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"));
-
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book1"), 1);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book2"), 2);
+            shoppingCart.Add(harryPotterBooks.Find(x => x.Name == "Book3"), 2);
 
             //act
             var actual = target.CaculatePrice(shoppingCart, bookSet);
@@ -179,7 +174,6 @@ namespace PotterShoppingCart.Tests
             //assert
             Assert.AreEqual(expected, actual);
         }
-
 
         private List<BookSet> SetBookSeries(string seriesName, List<Book> bookSeries, List<DiscountSetting> bookDiscount)
         {

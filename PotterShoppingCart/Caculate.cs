@@ -21,26 +21,23 @@ namespace PotterShoppingCart
             int totalPrice = 0;
 
             //總共有幾套書
-            var userSet = shoppingCart.books
-              .GroupBy(x => new { SeriesName = x.SeriesName, Name = x.Name, Price = x.Price })
+            var userSet = shoppingCart.products
+              .GroupBy(x => new { SeriesName = x.book.SeriesName, Name = x.book.Name, Price = x.book.Price })
                 .Select(lg =>
                 new
                 {
                     SeriesName = lg.Key.SeriesName,
                     Name = lg.Key.Name,
                     Price = lg.Key.Price,
-                    Total = lg.Count()
+                    Total = lg.Sum(y => y.Quantity)
                 }).ToList();
 
-            int maxSet = shoppingCart.books
-                .GroupBy(x => new { SeriesName = x.SeriesName, Name = x.Name, Price = x.Price })
+            int maxSet = shoppingCart.products
+              .GroupBy(x => new { SeriesName = x.book.SeriesName, Name = x.book.Name, Price = x.book.Price })
                 .Select(lg =>
                 new
                 {
-                    SeriesName = lg.Key.SeriesName,
-                    Name = lg.Key.Name,
-                    Price = lg.Key.Price,
-                    Total = lg.Count()
+                    Total = lg.Sum(y => y.Quantity)
                 }).Max(z => z.Total);
 
             int i = 1;

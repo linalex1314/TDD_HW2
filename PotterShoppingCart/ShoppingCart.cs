@@ -1,20 +1,20 @@
-﻿using System;
+﻿using PotterShoppingCart;
 using System.Collections.Generic;
 
 namespace PotterShoppingCart
 {
     public class ShoppingCart
     {
-        public List<Book> books { get; }
+        public List<Product> products { get; }
 
         public ShoppingCart()
         {
-            books = new List<Book>();
+            products = new List<Product>();
         }
 
-        public void Add(Book book)
+        public void Add(Book book, int quantity)
         {
-            books.Add(book);
+            products.Add(new Product { book = book, Quantity = quantity });
         }
     }
 }

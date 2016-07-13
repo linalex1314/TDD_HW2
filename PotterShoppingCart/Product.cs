@@ -16,6 +16,13 @@ namespace PotterShoppingCart
 
         public List<Book> books { get; set; }
 
-        public List<DiscountSetting> bookDiscount { get; set; }  
+        public List<DiscountSetting> bookDiscount { get; set; }
+    }
+
+    public class Product
+    {
+        public Book book { get; set; }
+
+        public int Quantity { get; set; }
     }
 }

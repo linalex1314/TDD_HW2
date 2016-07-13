@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Caculate.cs" />
     <Compile Include="DisCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
